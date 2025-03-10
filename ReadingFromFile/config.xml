@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <number1>-8</number1>
+    <number2>4</number2>
+    <number3>0</number3>  ///for test the error messsage in case of divide by 0
+</config>
