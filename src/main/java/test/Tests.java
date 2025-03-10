@@ -27,16 +27,16 @@ public class Tests extends BaseTest{
         test = extent.createTest("Add ,Substruct,Multiply,Division ");
         double number1 = Double.parseDouble(readFromThisFile("number1"));
         double number2 = Double.parseDouble(readFromThisFile("number2"));
-        String[] operation = {"add","substruct","multiply","division"};
-        Map<Integer, Double>  expected_Result;
+        String[] operation = {"add","substruct","multiply","division"}; //Array contains the operation names ,just for the print
+        Map<Integer, Double>  expected_Result; //Hash map that contains the expected results for the assertions
         expected_Result=new HashMap<>();
         expected_Result.put(0,number1+number2);
         expected_Result.put(1,number1-number2);
         expected_Result.put(2,number1*number2);
         expected_Result.put(3,number1/number2);
 
-        for (int i=0;i<calculatorPage.methods.length;i++){
-            try {
+        for (int i=0;i<calculatorPage.methods.length;i++){//The loop is executing the methods of runnable array . the actions and the array written on calculator_Page class
+            try {                                //After each method have assertion,update the report , add screenshot and print for the user
                 calculatorPage.methods[i].run();
                 if (expected_Result.get(i)>=0) {
                     Assert.assertEquals(expected_Result.get(i), calculatorPage.getActualResultNumber(), 0.0001);
@@ -63,7 +63,7 @@ public class Tests extends BaseTest{
     }
 
     @Test
-    public void test02_Divide_By_Zero()  throws ParserConfigurationException, IOException, SAXException{
+    public void test02_Divide_By_Zero()  throws ParserConfigurationException, IOException, SAXException{  ///Check the error message that appears in case of divide by zero
         // Create a test in Extent Reports
         test = extent.createTest("Divide by zero and get an error message ");
         try {
