@@ -135,20 +135,56 @@ public class Calculator_Page extends BasePage {
         return actualResultText;
     }
 
-    public double getActualResultNumber() throws ParserConfigurationException, IOException, SAXException {
+    public double getActualResultNumber(int i) throws ParserConfigurationException, IOException, SAXException {
         double number1 = Double.parseDouble(readFromThisFile("number1"));
         double number2 = Double.parseDouble(readFromThisFile("number2"));
         String actualResultText = getActualResultText().replace(",", "");
         double actualResultDouble = 0;
-        if (number1 + number2 >= 0) {
+        if (i == 0) {  //in case of i=0 the method is add
+            if (number1 + number2 >= 0) {
                 actualResultText = actualResultText.substring(0, actualResultText.indexOf(" "));
-                actualResultDouble=Double.parseDouble(actualResultText);
+                actualResultDouble = Double.parseDouble(actualResultText);
                 return actualResultDouble;
-        } else {
+            } else {
                 String[] textParts = actualResultText.split(" ");
-                actualResultDouble=Double.parseDouble(textParts[2]);
+                actualResultDouble = Double.parseDouble(textParts[2]);
                 return actualResultDouble;
-         }
+            }
+        }
+        else if (i == 1) { ////in case of i=0 the method is substruct
+            if (number1 - number2 >= 0) {
+                actualResultText = actualResultText.substring(0, actualResultText.indexOf(" "));
+                actualResultDouble = Double.parseDouble(actualResultText);
+                return actualResultDouble;
+            } else {
+                String[] textParts = actualResultText.split(" ");
+                actualResultDouble = Double.parseDouble(textParts[2]);
+                return actualResultDouble;
+            }
+        }
+        else if (i == 2) { ////in case of i=0 the method is multiply
+            if (number1 * number2 >= 0) {
+                actualResultText = actualResultText.substring(0, actualResultText.indexOf(" "));
+                actualResultDouble = Double.parseDouble(actualResultText);
+                return actualResultDouble;
+            } else {
+                String[] textParts = actualResultText.split(" ");
+                actualResultDouble = Double.parseDouble(textParts[2]);
+                return actualResultDouble;
+            }
+        }
+        else if (i == 3) { ////in case of i=0 the method is divide
+            if (number1 / number2 >= 0) {
+                actualResultText = actualResultText.substring(0, actualResultText.indexOf(" "));
+                actualResultDouble = Double.parseDouble(actualResultText);
+                return actualResultDouble;
+            } else {
+                String[] textParts = actualResultText.split(" ");
+                actualResultDouble = Double.parseDouble(textParts[2]);
+                return actualResultDouble;
+            }
+        }
+        return 0;
     }
 
     public Runnable[] methods = {
@@ -181,8 +217,6 @@ public class Calculator_Page extends BasePage {
                 }
             }
     };
-
-
 }
 
 

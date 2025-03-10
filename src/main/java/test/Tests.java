@@ -39,23 +39,23 @@ public class Tests extends BaseTest{
             try {                                //After each method have assertion,update the report , add screenshot and print for the user
                 calculatorPage.methods[i].run();
                 if (expected_Result.get(i)>=0) {
-                    Assert.assertEquals(expected_Result.get(i), calculatorPage.getActualResultNumber(), 0.0001);
+                    Assert.assertEquals(expected_Result.get(i), calculatorPage.getActualResultNumber(i), 0.0001);
                     test.log(Status.PASS, "Test Passed");
                     addScreenShotToReport();
-                    System.out.println(operation[i] +" Numbers :"+ number1 + "," +number2  +"\nresult is "+ calculatorPage.getActualResultNumber() + " -- Test Passed");
+                    System.out.println(operation[i] +" Numbers :"+ number1 + "," +number2  +"\nresult is "+ calculatorPage.getActualResultNumber(i) + " -- Test Passed");
                 } else {
                     double expected_Absolute_Value = (expected_Result.get(i)) * -1;
                     Assert.assertTrue(calculatorPage.getActualResultText().contains("מינוס"));
-                    Assert.assertEquals(expected_Absolute_Value, calculatorPage.getActualResultNumber(), 0.0001);
+                    Assert.assertEquals(expected_Absolute_Value, calculatorPage.getActualResultNumber(i), 0.0001);
                     test.log(Status.PASS, "Test Passed");
                     addScreenShotToReport();
-                    System.out.println(operation[i] +" Numbers :"+ number1 + "," +number2  +"\nresult is - "+ calculatorPage.getActualResultNumber() + " -- Test Passed");
+                    System.out.println(operation[i] +" Numbers :"+ number1 + "," +number2  +"\nresult is - "+ calculatorPage.getActualResultNumber(i) + " -- Test Passed");
                 }
             }
            catch (AssertionError error){
                test.log(Status.FAIL, "Test Failed " + error.getMessage());
                addScreenShotToReport();
-               System.out.println(operation[i] +"Numbers :"+ number1 + "," +number2  +"\n result is - "+ calculatorPage.getActualResultNumber() + " -- Test Failed");
+               System.out.println(operation[i] +"Numbers :"+ number1 + "," +number2  +"\n result is - "+ calculatorPage.getActualResultNumber(i) + " -- Test Failed");
            }
 
         }
